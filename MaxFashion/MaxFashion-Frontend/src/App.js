@@ -8,10 +8,8 @@ import GirlsPage from './components/MainPages/GirlsPage/GirlsPage';
 import MenPage from './components/MainPages/MenPage/MenPage';
 import MensAppendData from './components/MainPages/MenPage/MensAppendData';
 import WomenPage from './components/MainPages/WomenPage/WomenPage';
-
-
-
 import Navbar from './components/Navbar/Navbar';
+import ProductDetails from './components/ProductDetailInfo/ProductDetails';
 
 
 function App() {
@@ -27,7 +25,8 @@ function App() {
   {/* <MenPage/> */}
   {/* <GirlsPage/> */}
   {/* <BoysPage/> */}
-  <MensAppendData/>
+  {/* <MensAppendData/> */}
+  <ProductDetails/>
     </div>
   );
 }
