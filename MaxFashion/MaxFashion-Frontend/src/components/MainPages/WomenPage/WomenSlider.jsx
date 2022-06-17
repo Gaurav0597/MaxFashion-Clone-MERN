@@ -4,6 +4,7 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import './WomenPage.css'
 import { Pagination, Navigation } from 'swiper'
+import { Link } from 'react-router-dom'
 
 
 export const WomenSlider = () => {
@@ -41,7 +42,7 @@ export const WomenSlider = () => {
       >
         {arr.map((e) => {
           return (  <SwiperSlide>
-            <div className=" col ">
+            <Link to="/mens/products" className=" col ">
               <div
                 style={{ position: 'relative', height: '100%', width: '100%' }}
               >
@@ -51,7 +52,7 @@ export const WomenSlider = () => {
                   alt=""
                 />
               </div>
-            </div>
+            </Link>
           </SwiperSlide>)
          
         })}

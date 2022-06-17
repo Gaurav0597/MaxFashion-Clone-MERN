@@ -1,20 +1,21 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
   return (
     <div className="w-4/5 m-auto flex bg-slate-100">
-      <div className="w-1/12">
+      <Link to="/" className="w-1/12">
         <img
           src="https://www.landmarkgroup.com/int/sites/default/files/Brand-logo/New%20Max%20Logo-%20Eng%20With%20Outline_1.png"
           alt=""
           className="w-full"
         />
-      </div>
+      </Link>
       <div className="w-1/4 flex justify-around py-4">
-        <div className="font-medium hover:text-blue-800">Women</div>
-        <div className="font-medium hover:text-blue-800">Men</div>
-        <div className="font-medium hover:text-blue-800">Girls</div>
-        <div className="font-medium hover:text-blue-800">Boys</div>
+        <Link to="/" className="font-medium hover:text-blue-800">Women</Link>
+        <Link to="/mens" className="font-medium hover:text-blue-800">Men</Link>
+        <Link to="/girls" className="font-medium hover:text-blue-800">Girls</Link>
+        <Link to="/boys" className="font-medium hover:text-blue-800">Boys</Link>
       </div>
       <div className="w-2/5 py-2">
         <div className="flex h-10 py-2 bg-gray-200">
@@ -42,7 +43,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="w-3/12 flex justify-around py-4">
-        <div className="font-medium ml-4">Sign UP-Sign In</div>
+        <Link to="/register" className="font-medium ml-4">Sign UP-Sign In</Link>
         <div className="flex">
           <div className="font-medium mr-2">Basket</div>
           <div>

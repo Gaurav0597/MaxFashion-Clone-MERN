@@ -6,6 +6,7 @@ import {
 } from "redux"
 
 import thunk from "redux-thunk"
+import ProductReducer from "./Reducer";
 
 const rootReducer = combineReducers({maxFashion:ProductReducer});
 
