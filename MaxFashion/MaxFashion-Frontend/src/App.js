@@ -2,6 +2,7 @@
 import './App.css';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import CartPage from './components/Cart/CartPage';
 import Footer from './components/Footer/Footer';
 import BoysPage from './components/MainPages/BoysPage/BoysPage';
 import GirlsPage from './components/MainPages/GirlsPage/GirlsPage';
@@ -25,8 +26,9 @@ function App() {
   {/* <MenPage/> */}
   {/* <GirlsPage/> */}
   {/* <BoysPage/> */}
-  <MensAppendData/>
+  {/* <MensAppendData/> */}
   {/* <ProductDetails/> */}
+  <CartPage/>
     </div>
   );
 }

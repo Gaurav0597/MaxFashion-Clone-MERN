@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 
 const MensAppendData = () => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [data, setData] = useState([])
   const [ColorOrder, setColorOrder] = useState('')
   const [Type, setTypeOrder] = useState('')
