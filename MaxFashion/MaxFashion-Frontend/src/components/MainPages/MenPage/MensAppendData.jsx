@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { getDefaultNormalizer } from '@testing-library/react'
+import { useNavigate } from 'react-router-dom'
 
 const MensAppendData = () => {
+  const navigate = useNavigate()
   const [data, setData] = useState([])
   const [ColorOrder, setColorOrder] = useState('')
   const [Type, setTypeOrder] = useState('')
@@ -24,6 +25,7 @@ const MensAppendData = () => {
   }, [])
   function handlePrizeChange(event) {
     setPrizeOrder(event.target.value)
+    applyFilters()
   }
   function handleColorChange(event) {
     setColorOrder(event.target.value)
@@ -34,15 +36,28 @@ const MensAppendData = () => {
   function handleSizeChange(event) {
     setSizeOrder(event.target.value)
   }
+
+  async function applyFilters() {
+    const filters = {
+      ColorOrder,
+      Size,
+      Prize,
+      Type,
+    }
+
+    const res = await axios.post('', { filters })
+    setData(res.data)
+  }
+
   console.log(data)
   return (
     <div className="w-4/5 m-auto">
       <h1 className="text-4xl mb-7 mt-7">Mens Products</h1>
       <div>
-      <select name="" id="" onChange={handlePrizeChange}>
+        <select name="" id="" onChange={handlePrizeChange}>
           <option value="">Sort By Prize</option>
-          <option value="asc">ascending</option>
-          <option value="desc">deceding</option>
+          <option value="asc">Low to High</option>
+          <option value="desc">High to Low</option>
         </select>
         <select onChange={handleColorChange}>
           <option value="">Filter By color</option>
@@ -60,14 +75,13 @@ const MensAppendData = () => {
         </select>
         <select onChange={handleTypeChange}>
           <option value="">Filter By Type</option>
-          <option value="Full Sleeves">Formal</option>
-          <option value="Half Sleeves">Party</option>
+          <option value="Full Sleeves">Full Sleeves</option>
+          <option value="Half Sleeves">Half Sleeves</option>
           <option value="Formal">Festival</option>
           <option value="Polo">Festival</option>
         </select>
       </div>
-       
-  
+
       <div className=" grid grid-cols-4 gap-5">
         {data.map((data) => {
           return (

@@ -25,8 +25,8 @@ function App() {
   {/* <MenPage/> */}
   {/* <GirlsPage/> */}
   {/* <BoysPage/> */}
-  {/* <MensAppendData/> */}
-  <ProductDetails/>
+  <MensAppendData/>
+  {/* <ProductDetails/> */}
     </div>
   );
 }
