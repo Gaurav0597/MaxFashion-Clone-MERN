@@ -21,23 +21,50 @@ router.post('', async (req, res) => {
   }
 })
 
-router.post('/filter', async (req, res) => {
+
+router.get("/sort/asc",async(req,res)=>{
   try {
-    const { filters } = req.body
-
-    console.log('Filtering by: ' + filters)
-
-    const filteredData = await MensPageSchema.find({
-      size: filters.Size || '',
-      color: filters.ColorOrder || '',
-      Type: filters.Type || '',
-      Price: { $lte: filters.Prize || Number.MAX_SAFE_INTEGER },
-    })
-
-    res.send(filteredData)
+    const data = await MensPageSchema.find().sort({Price:1}).lean().exec()
+    res.send(data)
   } catch (error) {
-    res.send('An Error Occured: ' + error.message)
+    return res.status(500).send(err.message)
   }
 })
+router.get("/sort/desc",async(req,res)=>{
+  try {
+    const data = await MensPageSchema.find().sort({Price:-1}).lean().exec()
+    res.send(data)
+  } catch (error) {
+    return res.status(500).send(err.message)
+  }
+})
+router.get("/filter/color/:value",async(req,res)=>{
+ 
+  try {
+    const data = await MensPageSchema.find({color:req.params.value})
+    res.status(200).json(data)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+})
+router.get("/filter/type/:value",async(req,res)=>{
+ 
+  try {
+    const data = await MensPageSchema.find({Type:req.params.value})
+    res.status(200).json(data)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+})
+router.get("/filter/size/:value",async(req,res)=>{
+ 
+  try {
+    const data = await MensPageSchema.find({size:req.params.value})
+    res.status(200).json(data)
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+})
+    
 
 module.exports = router

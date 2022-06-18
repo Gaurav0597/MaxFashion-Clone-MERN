@@ -20,12 +20,12 @@ function App() {
     <div>
 
       <Navbar />
-      {/* <Payment/> */}
+    
       <OtpPage/>
       <Routes>
         <Route path="/" element={<WomenPage />}></Route>
         <Route path="/mens" element={<MenPage />}></Route>
-        <Route path="/mens/products" element={<MensAppendData/>}></Route>
+        <Route path="/menproducts" element={<MensAppendData/>}></Route>
         <Route path="/product/:id" element={<ProductDetails />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/register" element={<Register />}></Route>

@@ -1,31 +1,79 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { fetchDataSuccess } from '../../../Redux/Action'
 // import { useNavigate } from 'react-router-dom'
+import {useDispatch,useSelector } from "react-redux"
 
 const MensAppendData = () => {
+  const data1= useSelector(state=>state.maxFashion.products)
+  console.log(data1)
   // const navigate = useNavigate()
-  const [data, setData] = useState([])
+  const dispatch=useDispatch()
   const [ColorOrder, setColorOrder] = useState('')
   const [Type, setTypeOrder] = useState('')
   const [Size, setSizeOrder] = useState('')
   const [Prize, setPrizeOrder] = useState('')
   const getData = () => {
     axios
-      .get('http://localhost:8080/Mens')
+      .get(`http://localhost:1020/menproducts`)
       .then((res) => {
-        // console.log(res.data)
-        setData(res.data)
+        console.log(res.data)
+       
+        dispatch(fetchDataSuccess(res.data))
       })
       .catch((err) => {
         console.log(err.message)
       })
   }
+  // console.log(Prize)
+  // const lowtohigh=()=>{
+  //   console.log(Prize)
+  //   axios
+  //   .get(`http://localhost:1020/menproducts/sort/${Prize}`)
+  //   .then((res) => {
+  //     console.log(res.data)
+  //     setData(res.data)
+  //   })
+  //   .catch((err) => {
+  //     console.log(err.message)
+  //   })
+  // }
+  // const filterbyType=()=>{
+  //   console.log(Prize)
+  //   axios
+  //   .get(`http://localhost:1020/menproducts/filter/type/${Type}`)
+  //   .then((res) => {
+  //     console.log(res.data)
+  //     setData(res.data)
+  //   })
+  //   .catch((err) => {
+  //     console.log(err.message)
+  //   })
+  // }
+  // const hightolow=()=>{
+  //   axios
+  //   .get(`http://localhost:1020/menproducts/sort/desc`)
+  //   .then((res) => {
+  //     console.log(res.data)
+  //     setData(res.data)
+  //   })
+  //   .catch((err) => {
+  //     console.log(err.message)
+  //   })
+  // }
   useEffect(() => {
     getData()
-  }, [])
+  },[])
+
+  // useEffect(()=>{
+  //   lowtohigh()
+  // }, [Prize])
+
+  // useEffect(()=>{
+  //   filterbyType()
+  // },[Type])
   function handlePrizeChange(event) {
     setPrizeOrder(event.target.value)
-    applyFilters()
   }
   function handleColorChange(event) {
     setColorOrder(event.target.value)
@@ -37,23 +85,25 @@ const MensAppendData = () => {
     setSizeOrder(event.target.value)
   }
 
-  async function applyFilters() {
-    const filters = {
-      ColorOrder,
-      Size,
-      Prize,
-      Type,
-    }
+  // async function applyFilters() {
+  //   const filters = {
+  //     ColorOrder,
+  //     Size,
+  //     Prize,
+  //     Type,
+  //   }
 
-    const res = await axios.post('', { filters })
-    setData(res.data)
-  }
+  //   const res = await axios.post('', { filters })
+  //   setData(res.data)
+  // }
 
   console.log(data)
   return (
     <div className="w-4/5 m-auto">
       <h1 className="text-4xl mb-7 mt-7">Mens Products</h1>
       <div>
+        {/* <button onClick={()=>{lowtohigh()}}>sort</button>
+        <button onClick={()=>{hightolow()}}>sort by desc</button> */}
         <select name="" id="" onChange={handlePrizeChange}>
           <option value="">Sort By Prize</option>
           <option value="asc">Low to High</option>
@@ -77,13 +127,13 @@ const MensAppendData = () => {
           <option value="">Filter By Type</option>
           <option value="Full Sleeves">Full Sleeves</option>
           <option value="Half Sleeves">Half Sleeves</option>
-          <option value="Formal">Festival</option>
-          <option value="Polo">Festival</option>
+          <option value="Formal">Formal</option>
+          <option value="Polo">Polo</option>
         </select>
       </div>
 
       <div className=" grid grid-cols-4 gap-5">
-        {data.map((data) => {
+        {data1.map((data) => {
           return (
             <div className="max-w-sm bg-white">
               <a href="#">

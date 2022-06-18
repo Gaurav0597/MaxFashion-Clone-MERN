@@ -8,7 +8,7 @@ const fetchDataRequest = (payload) => {
       payload,
     }
   }
-  const fetchDataSuccess = (payload) => {
+  export const fetchDataSuccess = (payload) => {
     return {
       type: types.FETCH_DATA_SUCCESS,
       payload,

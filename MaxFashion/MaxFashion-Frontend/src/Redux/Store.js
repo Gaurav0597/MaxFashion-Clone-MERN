@@ -4,7 +4,6 @@ import {
     applyMiddleware,
     compose
 } from "redux"
-
 import thunk from "redux-thunk"
 import ProductReducer from "./Reducer";
 

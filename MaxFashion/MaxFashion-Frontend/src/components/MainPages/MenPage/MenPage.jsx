@@ -16,7 +16,7 @@ const MenPage = () => {
       <div className="w-full bg-slate-200 h-0.5 mt-20 rounded-sm"></div>
       <div className="mt-16">
         <h1 className="text-4xl mb-7">Budget Buy</h1>
-        <Link to="/mens/products" className="w-full">
+        <Link to="/menproducts/mens" className="w-full">
           <img
             src="https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/department-modularblock-oneBythree-C-Men-02JUNE2022.jpg"
             alt=""
