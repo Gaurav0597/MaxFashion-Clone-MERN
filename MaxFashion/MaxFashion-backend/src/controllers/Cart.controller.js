@@ -12,7 +12,6 @@ router.get("/:id/:product" , async (req, res) => {
     }catch(err){
         res.send({message: "product all ready add"})
     }
-
 })
 
 router.get("/product/men/:id", async (req, res) => {
