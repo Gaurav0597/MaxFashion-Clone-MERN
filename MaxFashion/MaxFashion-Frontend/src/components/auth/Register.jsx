@@ -36,7 +36,6 @@ const Register = () => {
 
   return (
     <div className="register">
-      {console.log('User', user)}
       <h1 className="font-medium text-4xl mb-6 ">Register</h1>
       <input
         type="text"

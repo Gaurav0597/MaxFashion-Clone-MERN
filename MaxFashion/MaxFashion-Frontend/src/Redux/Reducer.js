@@ -6,11 +6,10 @@ const initState = {
   loading: false,
   currentProduct: {},
   cart: [],
-  userId:""
+  userId: '',
+  cart1: [],
 }
-
-const ProductReducer = (state = initState, action) => {
-  const { type, payload } = action
+const ProductReducer = (state = initState, { type, payload }) => {
 
   switch (type) {
     //get all products
@@ -99,19 +98,23 @@ const ProductReducer = (state = initState, action) => {
         error: payload,
         loading: false,
       }
-      //userId
-      case types.GETUSERID:
-        return {
-          ...state,
-          userId:payload
-        }
+    //userId
+    case types.GETUSERID:
+      return {
+        ...state,
+        userId: payload,
+      }
 
-        //GetCart
-        case types.GETCARTDATA:
-          return {
-            ...state,
-            cart:[...payload]
-          }
+    //GetCart
+ 
+    case types.GETCARTDATA:
+
+      console.log("hello")
+
+      return {
+        ...state,
+        cart1: payload,
+      }
     default:
       return state
   }

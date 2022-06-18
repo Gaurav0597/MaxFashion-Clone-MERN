@@ -5,8 +5,9 @@ import { GetDataOfCartFromBackEnd } from '../../Redux/Action'
 const CartPage = () => {
   const dispatch=useDispatch()
   const userId=useSelector((state)=>state.maxFashion.userId)
-  const cartData=useSelector((state)=>state.maxFashion.cart)
+  const cartData=useSelector((state)=>state.maxFashion.cart1)
   console.log(userId)
+  console.log(cartData)
  const GetdataOfCart=()=>{
        dispatch(GetDataOfCartFromBackEnd(userId))
  }

@@ -22,7 +22,7 @@ const fetchDataRequest = (payload) => {
   }
 
   //fetData axios function
-  export const fetchData = (payload) => {
+  export const fetchData = () => {
     return (dispatch) => {
       dispatch(fetchDataRequest)
       Axios.get('http://localhost:1020/menproducts')
@@ -82,10 +82,6 @@ const fetchDataRequest = (payload) => {
       payload,
     }
   }
-
-  //getSingleProduct axios functionality
-
-  //addToCart functions
   const addProductCartRequest = (payload) => {
     return {
       type: types.ADD_PRODUCT_CART_REQUEST,
@@ -126,10 +122,6 @@ const fetchDataRequest = (payload) => {
       payload,
     }
   }
-
-  //fetch from cart axios functionality
- 
- //Remove from cart funcitons
  const deleteProductCartRequest = (payload) => {
     return {
       type: types.REMOVE_PRODUCT_CART_REQUEST,
@@ -155,9 +147,8 @@ const fetchDataRequest = (payload) => {
       payload
     }
   }
-    //  add data to backend
+   
   export const AddToCartBackend=(payload)=>(dispatch)=>{
-    // console.log("payload",payload)
     const {userId,elemId} =payload
     Axios.get(`http://localhost:1020/cart/${userId}/${elemId}`).then((response)=>{
          console.log(response)
@@ -168,21 +159,19 @@ const fetchDataRequest = (payload) => {
   }
      
   const GetCartDataRuducer= (payload) => {
+    console.log(types.GETCARTDATA)
          return {
           type:types.GETCARTDATA,
           payload
          }
   }
-
   export const GetDataOfCartFromBackEnd=(payload)=>(dispatch)=>{
     Axios.get(`http://localhost:1020/cart/product/men/${payload}`).then((response)=>{
          console.log(response.data)
-         GetCartDataRuducer(response.data)
+         dispatch(GetCartDataRuducer(response.data))
     }).catch((error)=>{
       console.log(error)
     })
     
   }
-  // Getdatafrom backend
-
-  //Remove from cart axios functionality
+ 
