@@ -2,6 +2,8 @@ const express = require('express')
 
 const router = express.Router()
 const MensPageSchema = require('../models/Mens.model.js')
+
+//FetchData
 router.get('/', async (req, res) => {
   try {
     const data = await MensPageSchema.find({}).lean().exec()
@@ -21,6 +23,7 @@ router.post('', async (req, res) => {
   }
 })
 
+//add to cart
 
 router.get("/sort/asc",async(req,res)=>{
   try {

@@ -22,6 +22,46 @@ const fetchDataRequest = (payload) => {
   }
 
   //fetData axios function
+  export const fetchData = (payload) => {
+    return (dispatch) => {
+      dispatch(fetchDataRequest)
+      Axios.get('http://localhost:1020/menproducts')
+        .then((r) => dispatch(fetchDataSuccess(r.data)))
+        .catch((e) => dispatch(fetchDataFailure(e.data)))
+    }
+  }
+  export const getDatabyPrie = (payload) => {
+    return (dispatch) => {
+      dispatch(fetchDataRequest)
+      Axios.get(`http://localhost:1020/menproducts/sort/${payload}`)
+        .then((r) => dispatch(fetchDataSuccess(r.data)))
+        .catch((e) => dispatch(fetchDataFailure(e.data)))
+    }
+  }
+  export const getDatabyType = (payload) => {
+    return (dispatch) => {
+      dispatch(fetchDataRequest)
+      Axios.get(`http://localhost:1020/menproducts/filter/type/${payload}`)
+        .then((r) => dispatch(fetchDataSuccess(r.data)))
+        .catch((e) => dispatch(fetchDataFailure(e.data)))
+    }
+  }
+  export const getDatabyColor = (payload) => {
+    return (dispatch) => {
+      dispatch(fetchDataRequest)
+      Axios.get(`http://localhost:1020/menproducts/filter/color/${payload}`)
+        .then((r) => dispatch(fetchDataSuccess(r.data)))
+        .catch((e) => dispatch(fetchDataFailure(e.data)))
+    }
+  }
+  export const getDatabySize = (payload) => {
+    return (dispatch) => {
+      dispatch(fetchDataRequest)
+      Axios.get(`http://localhost:1020/menproducts/filter/size/${payload}`)
+        .then((r) => dispatch(fetchDataSuccess(r.data)))
+        .catch((e) => dispatch(fetchDataFailure(e.data)))
+    }
+  }
 
   //getSingleProduct function
   const getSingleProductRequest = (payload) => {
