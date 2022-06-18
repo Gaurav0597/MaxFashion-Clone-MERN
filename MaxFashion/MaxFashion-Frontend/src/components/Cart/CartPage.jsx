@@ -1,27 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { GetDataOfCartFromBackEnd } from '../../Redux/Action'
 
 const CartPage = () => {
+  const dispatch=useDispatch()
+  const userId=useSelector((state)=>state.maxFashion.userId)
+  const cartData=useSelector((state)=>state.maxFashion.cart)
+  console.log(userId)
+ const GetdataOfCart=()=>{
+       dispatch(GetDataOfCartFromBackEnd(userId))
+ }
+ useEffect(()=>{
+  GetdataOfCart()
+ },[])
   return (
     <div className="w-4/5 m-auto">
       <h1 className="font-medium">3 Product</h1>
       <div className="w-full flex">
         <div className="w-3/5 mr-1">
           {/* iterable div */}
-          <div className="w-full border-gray-100 border-2">
+          {cartData.map((e)=>{
+            {console.log(e)}
+            return (
+            <div className="w-full border-gray-100 border-2">
             <div className="flex">
               <div className="w-20">
                 <img
-                  src="https://lmsin.net/cdn-cgi/image/h=294,w=196,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/max/1000010273868-Yellow-YELLOW-1000010273868-15122021_01-2100.jpg"
+                  src={e.image1}
                   alt=""
                 />
               </div>
               <div className="ml-5">
                 <h1 className="font-medium mb-1">
-                  MAX Men Printed Crew Neck t-shirt
+                       {e.ProductName}
                 </h1>
-                <h1 className="font-medium mb-1">₹299</h1>
-                <p className="text-sm"> colour:yellow</p>
-                <p className="text-sm">Size:M</p>
+                <h1 className="font-medium mb-1">₹{e.price}</h1>
+                <p className="text-sm"> colour:{e.color}</p>
+                <p className="text-sm">Size:{e.size}</p>
               </div>
             </div>
             <div className="flex justify-between w-full">
@@ -55,6 +70,8 @@ const CartPage = () => {
               </div>
             </div>
           </div>
+            )
+          })}
         </div>
         <div className="w-2/5">
           <div className="w-full ">

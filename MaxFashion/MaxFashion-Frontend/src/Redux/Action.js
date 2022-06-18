@@ -149,4 +149,40 @@ const fetchDataRequest = (payload) => {
     }
   }
 
+  export const login1=(payload)=>{
+    return {
+      type:types.GETUSERID,
+      payload
+    }
+  }
+    //  add data to backend
+  export const AddToCartBackend=(payload)=>(dispatch)=>{
+    // console.log("payload",payload)
+    const {userId,elemId} =payload
+    Axios.get(`http://localhost:1020/cart/${userId}/${elemId}`).then((response)=>{
+         console.log(response)
+    }).catch((error)=>{
+      console.log(error)
+    })
+    
+  }
+     
+  const GetCartDataRuducer= (payload) => {
+         return {
+          type:types.GETCARTDATA,
+          payload
+         }
+  }
+
+  export const GetDataOfCartFromBackEnd=(payload)=>(dispatch)=>{
+    Axios.get(`http://localhost:1020/cart/product/men/${payload}`).then((response)=>{
+         console.log(response.data)
+         GetCartDataRuducer(response.data)
+    }).catch((error)=>{
+      console.log(error)
+    })
+    
+  }
+  // Getdatafrom backend
+
   //Remove from cart axios functionality

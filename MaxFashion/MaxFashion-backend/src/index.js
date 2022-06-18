@@ -14,6 +14,9 @@ app.use("/",loginAuth)
 const RegisterAuth=require("./controllers/auth.controller.js")
 app.use("/",RegisterAuth)
 
+const cart= require("./controllers/Cart.controller.js")
+app.use("/cart",cart)
+
 app.listen(1020,async function(){
     try {
         await connect()

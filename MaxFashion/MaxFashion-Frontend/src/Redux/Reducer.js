@@ -6,6 +6,7 @@ const initState = {
   loading: false,
   currentProduct: {},
   cart: [],
+  userId:""
 }
 
 const ProductReducer = (state = initState, action) => {
@@ -98,6 +99,19 @@ const ProductReducer = (state = initState, action) => {
         error: payload,
         loading: false,
       }
+      //userId
+      case types.GETUSERID:
+        return {
+          ...state,
+          userId:payload
+        }
+
+        //GetCart
+        case types.GETCARTDATA:
+          return {
+            ...state,
+            cart:[...payload]
+          }
     default:
       return state
   }

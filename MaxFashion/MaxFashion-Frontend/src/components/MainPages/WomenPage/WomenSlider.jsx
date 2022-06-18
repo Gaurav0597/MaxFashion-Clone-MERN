@@ -26,7 +26,7 @@ export const WomenSlider = () => {
         'https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/MAX-Banner2-desktop-Women-08JUNE2022.jpg',
     },
   ]
-  console.log(arr)
+  // console.log(arr)
   return (
     <>
       <Swiper

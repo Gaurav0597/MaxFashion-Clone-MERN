@@ -13,7 +13,7 @@ const Navbar = () => {
       </Link>
       <div className="w-1/4 flex justify-around py-4">
         <Link to="/" className="font-medium hover:text-blue-800">Women</Link>
-        <Link to="/mens" className="font-medium hover:text-blue-800">Men</Link>
+        <Link to="/menproducts" className="font-medium hover:text-blue-800">Men</Link>
         <Link to="/girls" className="font-medium hover:text-blue-800">Girls</Link>
         <Link to="/boys" className="font-medium hover:text-blue-800">Boys</Link>
       </div>
@@ -45,7 +45,7 @@ const Navbar = () => {
       <div className="w-3/12 flex justify-around py-4">
         <Link to="/register" className="font-medium ml-4">Sign UP-Sign In</Link>
         <div className="flex">
-          <div className="font-medium mr-2">Basket</div>
+          <Link  to="/cart" className="font-medium mr-2">Basket</Link>
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"

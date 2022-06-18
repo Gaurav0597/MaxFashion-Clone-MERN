@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {
+  AddToCartBackend,
   fetchData,
   getDatabyColor,
   getDatabyPrie,
@@ -15,7 +16,8 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 
 const MensAppendData = () => {
-  const data1 = useSelector((state) => state.maxFashion.products)
+const {userId,products} = useSelector((state) => state.maxFashion)
+  console.log(userId)
   const dispatch = useDispatch()
 
   const [searchParams, setSearchParams] = useSearchParams()
@@ -24,8 +26,10 @@ const MensAppendData = () => {
   const [Size, setSizeOrder] = useState('')
   const [Prize, setPrizeOrder] = useState('')
 
-  const location = useLocation()
-
+  // const location = useLocation()
+   const addtocart=(elemId)=>{
+      dispatch(AddToCartBackend({userId,elemId}))
+   }
   useEffect(() => {
     dispatch(fetchData())
   }, [])
@@ -115,7 +119,7 @@ const MensAppendData = () => {
       </div>
 
       <div className=" grid grid-cols-4 gap-5">
-        {data1.map((data) => {
+        {products.map((data) => {
           return (
             <div className="max-w-sm bg-white">
               <a href="#">
@@ -135,12 +139,12 @@ const MensAppendData = () => {
                   <span className="text-3xl  text-gray-900 ">
                     ${data.Price}
                   </span>
-                  <a
-                    href="#"
+                  <p
+                     onClick={()=>{addtocart(data._id)}}
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Add to cart
-                  </a>
+                  </p>
                 </div>
               </div>
             </div>
