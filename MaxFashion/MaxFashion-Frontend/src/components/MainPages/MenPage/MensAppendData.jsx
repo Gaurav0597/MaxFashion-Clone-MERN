@@ -1,33 +1,72 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { fetchData, getDatabyColor, getDatabyPrie, getDatabySize, getDatabyType } from '../../../Redux/Action'
-// import { useNavigate } from 'react-router-dom'
-import {useDispatch,useSelector } from "react-redux"
+import {
+  fetchData,
+  getDatabyColor,
+  getDatabyPrie,
+  getDatabySize,
+  getDatabyType,
+} from '../../../Redux/Action'
+import {
+  useLocation,
+  useSearchParams,
+  createSearchParams,
+} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 
 const MensAppendData = () => {
-  const data1= useSelector(state=>state.maxFashion.products)
-  console.log(data1)
-  const dispatch=useDispatch()
+  const data1 = useSelector((state) => state.maxFashion.products)
+  const dispatch = useDispatch()
+
+  const [searchParams, setSearchParams] = useSearchParams()
   const [ColorOrder, setColorOrder] = useState('')
   const [Type, setTypeOrder] = useState('')
   const [Size, setSizeOrder] = useState('')
   const [Prize, setPrizeOrder] = useState('')
 
+  const location = useLocation()
+
   useEffect(() => {
     dispatch(fetchData())
-  },[])
-  useEffect(()=>{
-     dispatch(getDatabyPrie(Prize))
-  },[Prize])
-  useEffect(()=>{
+  }, [])
+
+  function updateParams() {
+    const filters = {
+      Prize,
+      Type,
+      Size,
+      ColorOrder,
+    }
+
+    let resultant = {}
+
+    Object.keys(filters).forEach((key) => {
+      if (filters[key] != '') resultant[key] = filters[key]
+    })
+
+    setSearchParams(createSearchParams(resultant))
+  }
+
+  useEffect(() => {
+    dispatch(getDatabyPrie(Prize))
+    updateParams()
+  }, [Prize])
+
+  useEffect(() => {
     dispatch(getDatabyType(Type))
- },[Type])
- useEffect(()=>{
-  dispatch(getDatabyColor(ColorOrder))
-},[ColorOrder])
-useEffect(()=>{
-  dispatch(getDatabySize(Size))
-},[Size])
+    updateParams()
+  }, [Type])
+
+  useEffect(() => {
+    dispatch(getDatabyColor(ColorOrder))
+    updateParams()
+  }, [ColorOrder])
+
+  useEffect(() => {
+    dispatch(getDatabySize(Size))
+    updateParams()
+  }, [Size])
+
   function handlePrizeChange(event) {
     setPrizeOrder(event.target.value)
   }
@@ -41,10 +80,9 @@ useEffect(()=>{
     setSizeOrder(event.target.value)
   }
 
- 
   return (
     <div className="w-4/5 m-auto">
-      <h1 className="text-4xl mb-7 mt-7">Mens Products</h1>
+      <h1 className="text-4xl mb-7 mt-7">Mens Products </h1>
       <div>
         {/* <button onClick={()=>{lowtohigh()}}>sort</button>
         <button onClick={()=>{hightolow()}}>sort by desc</button> */}
