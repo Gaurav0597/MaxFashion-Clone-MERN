@@ -5,27 +5,23 @@ import { CartRemove, GetDataOfCartFromBackEnd } from '../../Redux/Action'
 
 const CartPage = () => {
   const dispatch=useDispatch()
+  useEffect(()=>{
+    dispatch(GetDataOfCartFromBackEnd(userId))
+   },[dispatch])
   const userId=useSelector((state)=>state.maxFashion.userId)
   const cartData=useSelector((state)=>state.maxFashion.cart1)
-  // console.log(userId)
-  // console.log(cartData)
-  // console.log(cartData.length)
+
 
   let total = cartData.reduce(function (previousValue, currentValue) {
     return previousValue + currentValue.Price;
   }, 0);
   console.log("total",total)
 
+
    const handleRemove=(id)=>{
        dispatch(CartRemove(userId,id))
-      //  dispatch(GetDataOfCartFromBackEnd(userId))
    }
- const GetdataOfCart=()=>{
-       dispatch(GetDataOfCartFromBackEnd(userId))
- }
- useEffect(()=>{
-  GetdataOfCart()
- },[dispatch])
+
   return (
     <div className="w-4/5 m-auto">
       <h1 className="font-medium">{cartData.length} :Product</h1>

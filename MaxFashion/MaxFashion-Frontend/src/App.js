@@ -16,6 +16,7 @@ import Payment from './components/Checkouts/Payment'
 import OtpPage from './components/Checkouts/OtpPage'
 
 function App() {
+  
   return (
     <div>
 

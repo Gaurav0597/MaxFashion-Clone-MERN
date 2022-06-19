@@ -33,11 +33,11 @@ const MensAppendData = () => {
   // const location = useLocation()
   const addtocart = (elemId) => {
     dispatch(AddToCartBackend({ userId, elemId }))
-    dispatch(GetDataOfCartFromBackEnd(userId))
+    // dispatch(GetDataOfCartFromBackEnd(userId))
   }
   useEffect(() => {
     dispatch(fetchData())
-  }, [])
+  }, [dispatch])
 
   // const GetdataOfCart = () => {
   //   dispatch(GetDataOfCartFromBackEnd(userId))
