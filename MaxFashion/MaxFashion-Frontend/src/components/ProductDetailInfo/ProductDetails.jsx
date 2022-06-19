@@ -1,15 +1,24 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getIndividualData } from '../../Redux/Action'
+import {
+  AddToCartBackend,
+  GetDataOfCartFromBackEnd,
+  getIndividualData,
+} from '../../Redux/Action'
 
 const ProductDetails = () => {
-  const dispatch=useDispatch()
-  const {id} =useParams()
-  useEffect(() =>{
-      dispatch(getIndividualData(id))
-  },[])
-  const Individual=useSelector((state) =>state.maxFashion.currentProduct)
+  const dispatch = useDispatch()
+  const userId = useSelector((state) => state.maxFashion.userId)
+  const addtocart = (elemId) => {
+    dispatch(AddToCartBackend({ userId, elemId }))
+    dispatch(GetDataOfCartFromBackEnd(userId))
+  }
+  const { id } = useParams()
+  useEffect(() => {
+    dispatch(getIndividualData(id))
+  }, [])
+  const Individual = useSelector((state) => state.maxFashion.currentProduct)
   console.log(Individual)
   return (
     <div className="w=full">
@@ -19,37 +28,27 @@ const ProductDetails = () => {
           <div className="w-3/5 mr-8">
             <div className="flex">
               <div className="mr-2 mb-2">
-                <img
-                  src={Individual.image1}
-                  alt=""
-                />
+                <img src={Individual.image1} alt="" />
               </div>
               <div>
-                <img
-                   src={Individual.image2}
-                  alt=""
-                />
+                <img src={Individual.image2} alt="" />
               </div>
             </div>
             <div className="flex">
               <div className="mr-2 mb-2">
-                <img
-                  src={Individual.image3}
-                  alt=""
-                />
+                <img src={Individual.image3} alt="" />
               </div>
               <div>
-                <img
-                 src={Individual.image4}
-                  alt=""
-                />
+                <img src={Individual.image4} alt="" />
               </div>
             </div>
           </div>
           <div className="w-2/5">
             <div className="flex">
               <div className="mt-1">$</div>
-              <div className="text-3xl mr-3 font-medium">{Individual.Price}</div>
+              <div className="text-3xl mr-3 font-medium">
+                {Individual.Price}
+              </div>
               <div className="mt-3 text-gray-500">Inclusive of all taxes</div>
             </div>
             <div className="flex justify-between mt-1">
@@ -96,11 +95,7 @@ const ProductDetails = () => {
               <div className="font-medium ml-2">{Individual.color}</div>
             </div>
             <div className="h-16 w-16 border-yellow-400 border-2 mt-4">
-              <img
-                className="h-full w-full "
-                src={Individual.image1}
-                alt=""
-              />
+              <img className="h-full w-full " src={Individual.image1} alt="" />
             </div>
             <div className="flex justify-between mt-5 ">
               <div>Size:</div>
@@ -114,7 +109,12 @@ const ProductDetails = () => {
               <div className="border-blue-200 border-2 w-1/6  mr-3">XL</div>
               <div className="border-blue-200 border-2 w-1/6  mr-3">XXL</div>
             </div>
-            <div className="w-full h-12 mt-7 bg-blue-800 text-center">
+            <div
+              onClick={() => {
+                addtocart(Individual._id)
+              }}
+              className="w-full h-12 mt-7 bg-blue-800 text-center"
+            >
               <button className="w-full text-center py-3 text-white font-medium ">
                 ADD TO BASKET
               </button>
@@ -284,17 +284,24 @@ const ProductDetails = () => {
       </div>
       <div className="h-96 bg-orange-50 mt-12 flex">
         <div className="ml-36">
-        <h1 className="text-4xl mb-7 pt-12">Reviews</h1>
+          <h1 className="text-4xl mb-7 pt-12">Reviews</h1>
         </div>
         <div className="ml-48 mt-36 flex">
           <div className="mt-3 mr-4">
-      
-          <img src=" https://i1.lmsin.net/website_images/static-pages/brand_exp/brand2images/icons/write-review.svg" alt="" />
+            <img
+              src=" https://i1.lmsin.net/website_images/static-pages/brand_exp/brand2images/icons/write-review.svg"
+              alt=""
+            />
           </div>
-          <div className="text-xl font-medium w-60">What do you think about this product ?</div>
+          <div className="text-xl font-medium w-60">
+            What do you think about this product ?
+          </div>
         </div>
         <div className="ml-8 mt-36">
-          <button className="p-3 border-2 border-blue-300 w-72 font-medium text-blue-700 "> WRITE A REVIEW</button>
+          <button className="p-3 border-2 border-blue-300 w-72 font-medium text-blue-700 ">
+            {' '}
+            WRITE A REVIEW
+          </button>
         </div>
       </div>
     </div>
