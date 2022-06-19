@@ -148,7 +148,7 @@ const MensAppendData = () => {
                 </a>
                 <div className="flex font-semibold justify-between items-center mt-6">
                   <span className="text-3xl  text-gray-900 ">
-                    ${data.Price}
+                    ₹{data.Price}
                   </span>
                   <p
                     onClick={() => {

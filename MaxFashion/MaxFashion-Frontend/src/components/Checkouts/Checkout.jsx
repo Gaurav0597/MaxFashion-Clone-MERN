@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom'
 const Checkout = () => {
   const cartData=useSelector((state)=>state.maxFashion.cart1)
   console.log(cartData)
+  let total = cartData.reduce(function (previousValue, currentValue) {
+    return previousValue + currentValue.Price;
+  }, 0);
+  console.log("total",total)
   return (
     <div>
       <div className="mt-20">
@@ -183,13 +187,13 @@ const Checkout = () => {
                 <h2 className="text-xl font-bold">ITEMS 2</h2>
               </div>
               <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                Subtotal<span className="ml-2">$40.00</span>
+                Subtotal<span className="ml-2">₹{total}</span>
               </div>
               <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                Shipping Tax<span className="ml-2">$10</span>
+                Shipping Tax<span className="ml-2">₹0</span>
               </div>
               <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
-                Total<span className="ml-2">$50.00</span>
+                Total<span className="ml-2">₹{total}</span>
               </div>
             </div>
           </div>

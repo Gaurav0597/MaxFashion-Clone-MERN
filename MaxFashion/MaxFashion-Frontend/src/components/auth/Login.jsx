@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './Login.css'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { login1, loginUser } from '../../Redux/Action'
 
-const Login = ({ setLoginUser }) => {
+const Login = () => {
+  const userId=useSelector((state)=>state.maxFashion.userId)
+  const navigate=useNavigate()
   const dispatch=useDispatch()
   const [user, setUser] = useState({
     email: '',
@@ -25,7 +27,12 @@ const Login = ({ setLoginUser }) => {
       console.log(res.data)
       dispatch(login1(res.data.user._id))
       dispatch(loginUser(res.data.user.name))
-      alert(res.data.message)
+      if(userId!==""){
+        alert(res.data.message)
+        navigate("/")
+      }
+    }).catch(function(err){
+      alert("invalid credentials")
     })
   }
 
@@ -47,12 +54,12 @@ const Login = ({ setLoginUser }) => {
         onChange={handleChange}
         placeholder="Enter your Password"
       ></input>
-      <Link to="/menproducts">
+     
         {' '}
         <div className="pl-8 pr-8 bg-blue-500 h-10 rounded-md text-white pt-2 font-medium" onClick={()=>{login()}}>
          Login
         </div>
-      </Link>
+  
 
       <div>or</div>
       <Link to="/register">

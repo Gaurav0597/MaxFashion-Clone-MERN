@@ -10,6 +10,13 @@ const CartPage = () => {
   console.log(userId)
   console.log(cartData)
   console.log(cartData.length)
+
+  let total = cartData.reduce(function (previousValue, currentValue) {
+    return previousValue + currentValue.Price;
+  }, 0);
+  console.log("total",total)
+
+
  const GetdataOfCart=()=>{
        dispatch(GetDataOfCartFromBackEnd(userId))
  }
@@ -18,7 +25,7 @@ const CartPage = () => {
  },[])
   return (
     <div className="w-4/5 m-auto">
-      <h1 className="font-medium">3 Product</h1>
+      <h1 className="font-medium">{cartData.length} :Product</h1>
       <div className="w-full flex">
         <div className="w-3/5 mr-1">
           {/* iterable div */}
@@ -37,7 +44,7 @@ const CartPage = () => {
                 <h1 className="font-medium mb-1">
                        {e.ProductName}
                 </h1>
-                <h1 className="font-medium mb-1">₹{e.price}</h1>
+                <h1 className="font-medium mb-1">₹{e.Price}</h1>
                 <p className="text-sm"> colour:{e.color}</p>
                 <p className="text-sm">Size:{e.size}</p>
               </div>
@@ -132,7 +139,7 @@ const CartPage = () => {
             <div className="border-gray-100 border-2 p-4 mt-5">
                 <div className="flex justify-between">
                     <div className="text-sm">Total MRP</div>
-                    <div className="font-medium">₹897</div>
+                    <div className="font-medium">₹{total}</div>
                 </div>
                 <div className="flex justify-between">
                 <div className="text-sm">Shipping charge</div>
@@ -142,7 +149,7 @@ const CartPage = () => {
             <div className="w-11/12 m-auto bg-slate-200 h-0.5 mt-5 rounded-sm"></div>
             <div className="flex justify-between p-4">
                 <div className="text-2xl font-medium" >Total</div>
-                <div className="text-2xl font-medium">₹867</div>
+                <div className="text-2xl font-medium">₹{total}</div>
             </div>
             <Link to="/checkout" className="bg-blue-700 p-4">
                 <button  className="ml-24 w-60 text-white font-medium text-xl">Checkout</button>

@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import './Register.css'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import { useHistory } from "react-router-dom"
 
 const Register = () => {
   // const history = useHistory()
-
+  const navigate=useNavigate()
   const [user, setUser] = useState({
     name: '',
     email: '',
@@ -26,8 +26,14 @@ const Register = () => {
     const { name, email, password, reEnterPassword } = user
     if (name && email && password && password === reEnterPassword) {
       axios.post('https://maxfashion-by-gaurav.herokuapp.com/register', user).then((res) => {
-        alert(res.data.message)
-        // history.push("/login")
+
+       if(res.data.message==="Successfully Registerd"){
+                    alert(res.data.message)
+                    navigate("/login")
+                }else{
+                    alert("Innvalid  registration Credentials")
+                }
+                console.log(res)
       })
     } else {
       alert('invalid input')
@@ -65,14 +71,14 @@ const Register = () => {
         placeholder="Re-enter Password"
         onChange={handleChange}
       ></input>
-      <Link to="/login">
+      
         <div
           className="pl-8 pr-8 bg-blue-500 h-10 rounded-sm text-white pt-2 text-xl"
           onClick={register}
         >
           Register
         </div>
-      </Link>
+   
       <div>or</div>
       <Link to="/login">
         <div className="pl-8 pr-8 bg-blue-500 h-10 rounded-sm text-white pt-2 text-xl">
