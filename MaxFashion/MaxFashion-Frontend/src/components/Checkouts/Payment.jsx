@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Payment = () => {
   return (
@@ -116,11 +117,11 @@ const Payment = () => {
               />
             </div>
           </div>
-          <div>
+          <Link to="/">
             <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
               <i className="mdi mdi-lock-outline mr-1"></i> PAY NOW
             </button>
-          </div>
+          </Link>
         </div>
       </div>
     </div>
