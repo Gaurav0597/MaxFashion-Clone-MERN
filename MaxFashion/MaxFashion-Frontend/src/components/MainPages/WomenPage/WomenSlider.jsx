@@ -42,7 +42,7 @@ export const WomenSlider = () => {
       >
         {arr.map((e) => {
           return (  <SwiperSlide>
-            <Link to="/mens/products" className=" col ">
+            <Link to="/menproducts" className=" col ">
               <div
                 style={{ position: 'relative', height: '100%', width: '100%' }}
               >

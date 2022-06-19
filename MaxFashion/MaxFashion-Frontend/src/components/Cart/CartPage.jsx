@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { GetDataOfCartFromBackEnd } from '../../Redux/Action'
 
 const CartPage = () => {
@@ -8,6 +9,7 @@ const CartPage = () => {
   const cartData=useSelector((state)=>state.maxFashion.cart1)
   console.log(userId)
   console.log(cartData)
+  console.log(cartData.length)
  const GetdataOfCart=()=>{
        dispatch(GetDataOfCartFromBackEnd(userId))
  }
@@ -142,9 +144,9 @@ const CartPage = () => {
                 <div className="text-2xl font-medium" >Total</div>
                 <div className="text-2xl font-medium">₹867</div>
             </div>
-            <div className="bg-blue-700 p-4">
+            <Link to="/checkout" className="bg-blue-700 p-4">
                 <button  className="ml-24 w-60 text-white font-medium text-xl">Checkout</button>
-            </div>
+            </Link>
             <div className="bg-orange-50 w-full h-12 mt-3">
                 <div className="text-sm p-1">
                   <p className="mt-3">

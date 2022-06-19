@@ -16,7 +16,7 @@ const WomenPage = () => {
       <div className="w-full bg-slate-200 h-0.5 mt-20 rounded-sm"></div>
       <div className="mt-16">
         <h1 className="text-4xl mb-7">Budget Buy</h1>
-        <Link to="/mens/products" className="w-full">
+        <Link to="/menproducts" className="w-full">
           <img
             src="https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/department-modularblock-oneBythree-C-Women-02JUNE2022.jpg"
             alt=""
@@ -27,7 +27,7 @@ const WomenPage = () => {
       <div className="w-full bg-slate-200 h-0.5 mt-20 rounded-sm"></div>
       <div className="mt-16">
         <h1 className="text-4xl mb-7">The Joy Of Gifting</h1>
-        <Link to="/mens/products" className="w-full">
+        <Link to="/menproducts" className="w-full">
           <img
             src="https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-department-modularblock-oneBythree-A-ALLCOMMON-10JUNE2022A.jpg"
             alt=""
@@ -38,7 +38,7 @@ const WomenPage = () => {
       <div className="w-full bg-slate-200 h-0.5 mt-20 rounded-sm"></div>
       <div className="w-full mt-16">
         <h1 className="text-4xl mb-7">Shop By Category</h1>
-        <Link to="/mens/products" className="flex w-full">
+        <Link to="/menproducts" className="flex w-full">
           <div className="w-2/12 mr-3">
             <img
               className="w-full"
@@ -142,7 +142,7 @@ const WomenPage = () => {
       <div className="w-full bg-slate-200 h-0.5 mt-20 rounded-sm"></div>
       <div className="mt-16">
         <h1 className="text-4xl mb-7">Trending Stores</h1>
-        <Link to="/mens/products" className="flex">
+        <Link to="/menproducts" className="flex">
           <div className="mr-3">
             <img
               src="https://lmsin.net/cdn-cgi/image/w=500,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-Women-modularblock8-oneBythree-A-Women-04MAY2022.jpg"
@@ -166,7 +166,7 @@ const WomenPage = () => {
       <div className="w-full bg-slate-200 h-0.5 mt-20 rounded-sm"></div>
       <div className="mt-16">
         <h1 className="text-4xl mb-7">Monsoon Checklist</h1>
-        <Link to="/mens/products">
+        <Link to="/menproducts">
           <img
             src="https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-department-5modularblock-oneBytwo1C-Women-08JUNE2022.jpg"
             alt=""
@@ -186,7 +186,7 @@ const WomenPage = () => {
       <div className="w-full bg-slate-200 h-0.5 mt-20 rounded-sm"></div>
       <div className="mt-16">
         <h1 className="text-4xl mb-7">Sports Must-Haves</h1>
-        <Link to="/mens/products" className="flex">
+        <Link to="/menproducts" className="flex">
           <div className="mr-3">
             <img
               src="https://lmsin.net/cdn-cgi/image/w=500,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-modularblock15One-Women-02JUNE2022.jpg"
@@ -208,7 +208,7 @@ const WomenPage = () => {
         </Link>
       </div>
       <div className="w-full bg-slate-200 h-0.5 mt-20 rounded-sm"></div>
-      <Link to="/mens/products" className="mt-16">
+      <Link to="/menproducts" className="mt-16">
         <img
           src="https://lmsin.net/cdn-cgi/image/w=1232,q=60,fit=cover/https://70415bb9924dca896de0-34a37044c62e41b40b39fcedAD8AF927.lmsin.net/MAX-Friday/MAX2.O/desktop-department-9modularblock-oneBythree-A-Women-01APR2022.jpg"
           alt=""

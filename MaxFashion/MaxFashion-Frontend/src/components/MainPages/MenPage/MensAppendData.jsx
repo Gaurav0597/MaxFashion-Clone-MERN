@@ -7,16 +7,20 @@ import {
   getDatabyPrie,
   getDatabySize,
   getDatabyType,
+  GetDataOfCartFromBackEnd,
 } from '../../../Redux/Action'
 import {
   useLocation,
   useSearchParams,
   createSearchParams,
+  Link,
 } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 const MensAppendData = () => {
-const {userId,products} = useSelector((state) => state.maxFashion)
+  const { userId, products } = useSelector((state) => state.maxFashion)
+  const cartData = useSelector((state) => state.maxFashion.cart1)
+  console.log(cartData.length)
   console.log(userId)
   const dispatch = useDispatch()
 
@@ -27,13 +31,20 @@ const {userId,products} = useSelector((state) => state.maxFashion)
   const [Prize, setPrizeOrder] = useState('')
 
   // const location = useLocation()
-   const addtocart=(elemId)=>{
-      dispatch(AddToCartBackend({userId,elemId}))
-   }
+  const addtocart = (elemId) => {
+    dispatch(AddToCartBackend({ userId, elemId }))
+    dispatch(GetDataOfCartFromBackEnd(userId))
+  }
   useEffect(() => {
     dispatch(fetchData())
   }, [])
 
+  // const GetdataOfCart = () => {
+  //   dispatch(GetDataOfCartFromBackEnd(userId))
+  // }
+  // useEffect(() => {
+  //   GetdataOfCart()
+  // }, [])
   function updateParams() {
     const filters = {
       Prize,
@@ -122,13 +133,13 @@ const {userId,products} = useSelector((state) => state.maxFashion)
         {products.map((data) => {
           return (
             <div className="max-w-sm bg-white">
-              <a href="#">
+              <Link to={`${data._id}`}>
                 <img
                   className="p-8 rounded-t-lg"
                   src={data.image1}
                   alt="product image"
                 />
-              </a>
+              </Link>
               <div className="px-5 pb-5">
                 <a href="#">
                   <h5 className="text-xl font-semibold tracking-tight text-gray-900">
@@ -140,7 +151,9 @@ const {userId,products} = useSelector((state) => state.maxFashion)
                     ${data.Price}
                   </span>
                   <p
-                     onClick={()=>{addtocart(data._id)}}
+                    onClick={() => {
+                      addtocart(data._id)
+                    }}
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Add to cart

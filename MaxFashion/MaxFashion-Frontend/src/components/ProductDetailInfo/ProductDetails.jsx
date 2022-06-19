@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { getIndividualData } from '../../Redux/Action'
 
 const ProductDetails = () => {
+  const dispatch=useDispatch()
+  const {id} =useParams()
+  useEffect(() =>{
+      dispatch(getIndividualData(id))
+  },[])
+  const Individual=useSelector((state) =>state.maxFashion.currentProduct)
+  console.log(Individual)
   return (
     <div className="w=full">
       <div className="w-4/5 m-auto">
@@ -10,13 +20,13 @@ const ProductDetails = () => {
             <div className="flex">
               <div className="mr-2 mb-2">
                 <img
-                  src="https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/max/1000011234937-Green-GREEN-1000011234937-26042022_01-2100.jpg"
+                  src={Individual.image1}
                   alt=""
                 />
               </div>
               <div>
                 <img
-                  src="https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/max/1000011234937-Green-GREEN-1000011234937-26042022_02-2100.jpg"
+                   src={Individual.image2}
                   alt=""
                 />
               </div>
@@ -24,13 +34,13 @@ const ProductDetails = () => {
             <div className="flex">
               <div className="mr-2 mb-2">
                 <img
-                  src="https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/max/1000011234937-Green-GREEN-1000011234937-26042022_03-2100.jpg"
+                  src={Individual.image3}
                   alt=""
                 />
               </div>
               <div>
                 <img
-                  src="https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/max/1000011234937-Green-GREEN-1000011234937-26042022_06-2100.jpg"
+                 src={Individual.image4}
                   alt=""
                 />
               </div>
@@ -39,7 +49,7 @@ const ProductDetails = () => {
           <div className="w-2/5">
             <div className="flex">
               <div className="mt-1">$</div>
-              <div className="text-3xl mr-3 font-medium">299</div>
+              <div className="text-3xl mr-3 font-medium">{Individual.Price}</div>
               <div className="mt-3 text-gray-500">Inclusive of all taxes</div>
             </div>
             <div className="flex justify-between mt-1">
@@ -83,12 +93,12 @@ const ProductDetails = () => {
             </div>
             <div className="mt-5 flex">
               <div>Color:</div>
-              <div className="font-medium ml-2">blue</div>
+              <div className="font-medium ml-2">{Individual.color}</div>
             </div>
             <div className="h-16 w-16 border-yellow-400 border-2 mt-4">
               <img
                 className="h-full w-full "
-                src="https://lmsin.net/cdn-cgi/image/h=831,w=615,q=60,fit=cover/https://aaeff43fe32172cbcecc-ae2a4e9a8cbc330ede5588dedf56886e.lmsin.net/max/1000011234937-Green-GREEN-1000011234937-26042022_01-2100.jpg"
+                src={Individual.image1}
                 alt=""
               />
             </div>

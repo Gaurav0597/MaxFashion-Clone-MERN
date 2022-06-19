@@ -5,9 +5,9 @@ const initState = {
   error: '',
   loading: false,
   currentProduct: {},
-  cart: [],
   userId: '',
   cart1: [],
+  userName:""
 }
 const ProductReducer = (state = initState, { type, payload }) => {
 
@@ -33,49 +33,8 @@ const ProductReducer = (state = initState, { type, payload }) => {
         loading: false,
       }
 
-    //get single product
-
-    case types.GET_SINGLE_PRODUCT_REQUEST:
-      return {
-        ...state,
-        error: '',
-        loading: true,
-      }
-    case types.GET_SINGLE_PRODUCT_SUCCESS:
-      return {
-        ...state,
-        currentProduct: payload,
-        error: '',
-        loading: false,
-      }
-    case types.GET_SINGLE_PRODUCT_FAILURE:
-      return {
-        ...state,
-        error: payload,
-        loading: false,
-      }
-
-    //add to cart
-
-    case types.ADD_PRODUCT_CART_REQUEST:
-      return {
-        ...state,
-        error: '',
-        loading: true,
-      }
-    case types.ADD_PRODUCT_CART_SUCCESS:
-      return {
-        ...state,
-        cart: [...state.cart, payload],
-        error: '',
-        loading: false,
-      }
-    case types.ADD_PRODUCT_CART_FAILURE:
-      return {
-        ...state,
-        error: payload,
-        loading: false,
-      }
+  
+      
 
     // get product from cart
 
@@ -104,7 +63,12 @@ const ProductReducer = (state = initState, { type, payload }) => {
         ...state,
         userId: payload,
       }
-
+   //username
+   case types.GETUSERNAME:
+    return {
+      ...state,
+      userName:payload
+    }
     //GetCart
  
     case types.GETCARTDATA:
@@ -115,6 +79,11 @@ const ProductReducer = (state = initState, { type, payload }) => {
         ...state,
         cart1: payload,
       }
+      case types.GETINDIVIDUALDATA:
+        return {
+          ...state,
+          currentProduct: payload
+        }
     default:
       return state
   }

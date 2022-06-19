@@ -3,7 +3,7 @@ import './Login.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { login1 } from '../../Redux/Action'
+import { login1, loginUser } from '../../Redux/Action'
 
 const Login = ({ setLoginUser }) => {
   const dispatch=useDispatch()
@@ -24,6 +24,7 @@ const Login = ({ setLoginUser }) => {
     axios.post('http://localhost:1020/login', user).then((res) => {
       console.log(res.data)
       dispatch(login1(res.data.user._id))
+      dispatch(loginUser(res.data.user.name))
       alert(res.data.message)
     })
   }

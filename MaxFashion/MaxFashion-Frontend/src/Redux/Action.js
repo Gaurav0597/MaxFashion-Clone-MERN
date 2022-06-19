@@ -148,6 +148,12 @@ const fetchDataRequest = (payload) => {
     }
   }
    
+  export const loginUser =(payload)=>{
+    return {
+      type:types.GETUSERNAME,
+      payload
+    }
+  }
   export const AddToCartBackend=(payload)=>(dispatch)=>{
     const {userId,elemId} =payload
     Axios.get(`http://localhost:1020/cart/${userId}/${elemId}`).then((response)=>{
@@ -173,5 +179,21 @@ const fetchDataRequest = (payload) => {
       console.log(error)
     })
     
+  }
+  
+  const GetIndividualDataFromBackend= (payload) => {
+    // console.log(types.GETCARTDATA)
+         return {
+          type:types.GETINDIVIDUALDATA,
+          payload
+         }
+  }
+  export const getIndividualData=(payload)=>(dispatch)=>{
+    Axios.get(`http://localhost:1020/menproducts/${payload}`).then((response)=>{
+      console.log(response.data)
+      dispatch(GetIndividualDataFromBackend(response.data))
+    }).catch((error)=>{
+      console.log(error)
+    })
   }
  

@@ -1,7 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
+  const userName=useSelector((state)=>state.maxFashion.userName)
+  console.log(userName)
+  const cartData = useSelector((state) => state.maxFashion.cart1)
+  const cartDatalength=cartData.length
   return (
     <div className="w-4/5 m-auto flex bg-slate-100">
       <Link to="/" className="w-1/12">
@@ -13,7 +18,7 @@ const Navbar = () => {
       </Link>
       <div className="w-1/4 flex justify-around py-4">
         <Link to="/" className="font-medium hover:text-blue-800">Women</Link>
-        <Link to="/menproducts" className="font-medium hover:text-blue-800">Men</Link>
+        <Link to="/mens" className="font-medium hover:text-blue-800">Men</Link>
         <Link to="/girls" className="font-medium hover:text-blue-800">Girls</Link>
         <Link to="/boys" className="font-medium hover:text-blue-800">Boys</Link>
       </div>
@@ -43,7 +48,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="w-3/12 flex justify-around py-4">
-        <Link to="/register" className="font-medium ml-4">Sign UP-Sign In</Link>
+        {userName!=""?<div className="font-medium">Hi {userName}</div> :<Link to="/register" className="font-medium ml-4">Sign UP-Sign In</Link>}
         <div className="flex">
           <Link  to="/cart" className="font-medium mr-2">Basket</Link>
           <div>
@@ -60,6 +65,7 @@ const Navbar = () => {
               />
             </svg>
           </div>
+          <div className="font-medium">{cartDatalength}</div>
         </div>
       </div>
     </div>

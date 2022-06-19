@@ -23,6 +23,15 @@ router.post('', async (req, res) => {
   }
 })
 
+router.get("/:id",async(req,res)=>{
+  try{
+       const mainproduct=await MensPageSchema.findById(req.params.id).lean().exec()
+       return res.status(200).send(mainproduct);
+  }
+  catch(err){
+      return res.status(500).send(err.message)
+  }
+})
 //add to cart
 
 router.get("/sort/asc",async(req,res)=>{
