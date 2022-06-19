@@ -180,11 +180,10 @@ const Checkout = () => {
                   </div>
                   )
                 })}
-                 
                 </div>
               </div>
               <div className="flex p-4 mt-4">
-                <h2 className="text-xl font-bold">ITEMS 2</h2>
+                <h2 className="text-xl font-bold">ITEMS {cartData.length}</h2>
               </div>
               <div className="flex items-center w-full py-4 text-sm font-semibold border-b border-gray-300 lg:py-5 lg:px-3 text-heading last:border-b-0 last:text-base last:pb-0">
                 Subtotal<span className="ml-2">₹{total}</span>
