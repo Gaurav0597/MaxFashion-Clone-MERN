@@ -204,3 +204,13 @@ const fetchDataRequest = (payload) => {
           payload
          }
   }
+
+  export const CartRemove=(userId,id)=>(dispatch)=>{
+    Axios.delete(`https://maxfashion-by-gaurav.herokuapp.com/cart/productdelete/${userId}/${id}`).then((response)=>{
+         console.log("deleteCart",response)
+         
+    }).then(dispatch(GetDataOfCartFromBackEnd(userId)))
+    .catch((error)=>{
+      console.log(error)
+    })
+  }

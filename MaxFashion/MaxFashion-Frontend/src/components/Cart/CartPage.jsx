@@ -1,28 +1,31 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { GetDataOfCartFromBackEnd } from '../../Redux/Action'
+import { CartRemove, GetDataOfCartFromBackEnd } from '../../Redux/Action'
 
 const CartPage = () => {
   const dispatch=useDispatch()
   const userId=useSelector((state)=>state.maxFashion.userId)
   const cartData=useSelector((state)=>state.maxFashion.cart1)
-  console.log(userId)
-  console.log(cartData)
-  console.log(cartData.length)
+  // console.log(userId)
+  // console.log(cartData)
+  // console.log(cartData.length)
 
   let total = cartData.reduce(function (previousValue, currentValue) {
     return previousValue + currentValue.Price;
   }, 0);
   console.log("total",total)
 
-
+   const handleRemove=(id)=>{
+       dispatch(CartRemove(userId,id))
+      //  dispatch(GetDataOfCartFromBackEnd(userId))
+   }
  const GetdataOfCart=()=>{
        dispatch(GetDataOfCartFromBackEnd(userId))
  }
  useEffect(()=>{
   GetdataOfCart()
- },[])
+ },[dispatch])
   return (
     <div className="w-4/5 m-auto">
       <h1 className="font-medium">{cartData.length} :Product</h1>
@@ -73,7 +76,7 @@ const CartPage = () => {
             </div>
             <div className="w-full justify-between flex mt-4 border-gray-100 border-2 h-10 ">
               <div className="w-1/2 text-center mt-1">
-                <button className="text-blue-700">Remove</button>
+                <button onClick={()=>{handleRemove(e._id)}} className="text-blue-700">Remove</button>
               </div>
               <div className="w-1/2 text-center mt-1">
                 <button className="text-blue-700"> Move to favourites</button>
