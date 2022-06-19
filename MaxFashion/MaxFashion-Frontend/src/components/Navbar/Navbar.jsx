@@ -75,7 +75,7 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <div className="font-medium">{cartDatalength}</div>
+          {userID?<div className="font-medium">{cartDatalength}</div>:0}
         </div>
       </div>
     </div>
