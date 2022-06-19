@@ -143,7 +143,7 @@ const Checkout = () => {
                     placeholder="Notes for delivery"
                   ></textarea>
                 </div>
-                <Link to="/" className="mt-4">
+                <Link to="/payment" className="mt-4">
                   <button className="w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900">
                     Process
                   </button>

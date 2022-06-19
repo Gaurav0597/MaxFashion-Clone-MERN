@@ -21,7 +21,7 @@ function App() {
 
       <Navbar />
     
-      <OtpPage/>
+      {/* <OtpPage/> */}
       <Routes>
         <Route path="/" element={<WomenPage />}></Route>
         <Route path="/mens" element={<MenPage />}></Route>
@@ -33,7 +33,8 @@ function App() {
         <Route path="/boys" element={<BoysPage/>}></Route>
         <Route path="/girls" element={<GirlsPage/>}></Route>
         <Route path="/checkout" element={<Checkout/>}></Route>
-        <Route></Route>
+        <Route path="/payment" element={<Payment/>}></Route>
+        <Route path="/otp" element={<OtpPage/>}></Route>
 
 
 
