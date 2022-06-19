@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
   try {
     const data = await MensPageSchema.find({}).lean().exec()
 
-    res.status(200).send(data)
+    res.status(200).json(data)
   } catch (err) {
     console.log(err)
   }

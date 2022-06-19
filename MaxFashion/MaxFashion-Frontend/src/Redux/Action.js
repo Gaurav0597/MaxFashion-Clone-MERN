@@ -25,7 +25,7 @@ const fetchDataRequest = (payload) => {
   export const fetchData = () => {
     return (dispatch) => {
       dispatch(fetchDataRequest)
-      Axios.get('http://localhost:1020/menproducts')
+      Axios.get('https://maxfashion-by-gaurav.herokuapp.com/menproducts')
         .then((r) => dispatch(fetchDataSuccess(r.data)))
         .catch((e) => dispatch(fetchDataFailure(e.data)))
     }
@@ -33,7 +33,7 @@ const fetchDataRequest = (payload) => {
   export const getDatabyPrie = (payload) => {
     return (dispatch) => {
       dispatch(fetchDataRequest)
-      Axios.get(`http://localhost:1020/menproducts/sort/${payload}`)
+      Axios.get(`https://maxfashion-by-gaurav.herokuapp.com/menproducts/sort/${payload}`)
         .then((r) => dispatch(fetchDataSuccess(r.data)))
         .catch((e) => dispatch(fetchDataFailure(e.data)))
     }
@@ -41,7 +41,7 @@ const fetchDataRequest = (payload) => {
   export const getDatabyType = (payload) => {
     return (dispatch) => {
       dispatch(fetchDataRequest)
-      Axios.get(`http://localhost:1020/menproducts/filter/type/${payload}`)
+      Axios.get(`https://maxfashion-by-gaurav.herokuapp.com/menproducts/filter/type/${payload}`)
         .then((r) => dispatch(fetchDataSuccess(r.data)))
         .catch((e) => dispatch(fetchDataFailure(e.data)))
     }
@@ -49,7 +49,7 @@ const fetchDataRequest = (payload) => {
   export const getDatabyColor = (payload) => {
     return (dispatch) => {
       dispatch(fetchDataRequest)
-      Axios.get(`http://localhost:1020/menproducts/filter/color/${payload}`)
+      Axios.get(`https://maxfashion-by-gaurav.herokuapp.com/menproducts/filter/color/${payload}`)
         .then((r) => dispatch(fetchDataSuccess(r.data)))
         .catch((e) => dispatch(fetchDataFailure(e.data)))
     }
@@ -57,7 +57,7 @@ const fetchDataRequest = (payload) => {
   export const getDatabySize = (payload) => {
     return (dispatch) => {
       dispatch(fetchDataRequest)
-      Axios.get(`http://localhost:1020/menproducts/filter/size/${payload}`)
+      Axios.get(`https://maxfashion-by-gaurav.herokuapp.com/menproducts/filter/size/${payload}`)
         .then((r) => dispatch(fetchDataSuccess(r.data)))
         .catch((e) => dispatch(fetchDataFailure(e.data)))
     }
@@ -156,7 +156,7 @@ const fetchDataRequest = (payload) => {
   }
   export const AddToCartBackend=(payload)=>(dispatch)=>{
     const {userId,elemId} =payload
-    Axios.get(`http://localhost:1020/cart/${userId}/${elemId}`).then((response)=>{
+    Axios.get(`https://maxfashion-by-gaurav.herokuapp.com/cart/${userId}/${elemId}`).then((response)=>{
          console.log(response)
     }).catch((error)=>{
       console.log(error)
@@ -172,7 +172,7 @@ const fetchDataRequest = (payload) => {
          }
   }
   export const GetDataOfCartFromBackEnd=(payload)=>(dispatch)=>{
-    Axios.get(`http://localhost:1020/cart/product/men/${payload}`).then((response)=>{
+    Axios.get(`https://maxfashion-by-gaurav.herokuapp.com/cart/product/men/${payload}`).then((response)=>{
          console.log(response.data)
          dispatch(GetCartDataRuducer(response.data))
     }).catch((error)=>{
@@ -189,7 +189,7 @@ const fetchDataRequest = (payload) => {
          }
   }
   export const getIndividualData=(payload)=>(dispatch)=>{
-    Axios.get(`http://localhost:1020/menproducts/${payload}`).then((response)=>{
+    Axios.get(`https://maxfashion-by-gaurav.herokuapp.com/menproducts/${payload}`).then((response)=>{
       console.log(response.data)
       dispatch(GetIndividualDataFromBackend(response.data))
     }).catch((error)=>{

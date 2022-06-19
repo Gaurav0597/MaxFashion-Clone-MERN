@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Checkout = () => {
+  const cartData=useSelector((state)=>state.maxFashion.cart1)
+  console.log(cartData)
   return (
     <div>
       <div className="mt-20">
@@ -153,66 +156,27 @@ const Checkout = () => {
               <h2 className="text-xl font-bold">Order Summary</h2>
               <div className="mt-8">
                 <div className="flex flex-col space-y-4">
-                  <div className="flex space-x-4">
+                  {/* iterable div */}
+                {cartData.map((e)=>{
+                  return (
+                    <div className="flex space-x-4">
                     <div>
                       <img
-                        src="https://source.unsplash.com/user/erondu/1600x900"
+                        src={e.image1}
                         alt="image"
                         className="w-60"
                       />
                     </div>
                     <div>
-                      <h2 className="text-xl font-bold">Title</h2>
-                      <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                      <span className="text-red-600">Price</span> $20
+                      <h2 className="text-xl font-bold">{e.ProductName}</h2>
+                      
+                      <span className="text-red-600">{e.Price}</span> $20
                     </div>
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </div>
+                  
                   </div>
-                  <div className="flex space-x-4">
-                    <div>
-                      <img
-                        src="https://source.unsplash.com/collection/190727/1600x900"
-                        alt="image"
-                        className="w-60"
-                      />
-                    </div>
-                    <div>
-                      <h2 className="text-xl font-bold">Title</h2>
-                      <p className="text-sm">Lorem ipsum dolor sit amet, tet</p>
-                      <span className="text-red-600">Price</span> $20
-                    </div>
-                    <div>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="w-6 h-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </div>
-                  </div>
+                  )
+                })}
+                 
                 </div>
               </div>
               <div className="flex p-4 mt-4">
