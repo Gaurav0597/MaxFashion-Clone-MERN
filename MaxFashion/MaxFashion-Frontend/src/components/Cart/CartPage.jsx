@@ -69,7 +69,7 @@ const CartPage = () => {
                 </div>
                 <div> Delivery in Enter Pincode above</div>
               </div>
-              <div className="mt-3">Qty:2</div>
+              <div className="mt-3">Qty:1</div>
             </div>
             <div className="w-full justify-between flex mt-4 border-gray-100 border-2 h-10 ">
               <div className="w-1/2 text-center mt-1">

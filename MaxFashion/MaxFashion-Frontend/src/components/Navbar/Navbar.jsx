@@ -1,9 +1,19 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { HandleUserLogout } from '../../Redux/Action'
 
 const Navbar = () => {
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
+  const handlelogoout=() => {
+      console.log("logout")
+      dispatch(HandleUserLogout())
+      navigate("/")
+  }
   const userName=useSelector((state)=>state.maxFashion.userName)
+  const userID=useSelector((state)=>state.maxFashion.userId)
+  console.log(userID)
   console.log(userName)
   const cartData = useSelector((state) => state.maxFashion.cart1)
   const cartDatalength=cartData.length
@@ -48,7 +58,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="w-3/12 flex justify-around py-4">
-        {userName!=""?<div className="font-medium">Hi {userName}</div> :<Link to="/register" className="font-medium ml-4">Sign UP-Sign In</Link>}
+        {userName!=""?<div className="flex"><div className="font-medium">Hi {userName}</div> <div onClick={()=>{handlelogoout()}} className="font-medium ml-9">Logout</div></div> :<Link to="/register" className="font-medium ml-4">Sign UP-Sign In</Link>}
         <div className="flex">
           <Link  to="/cart" className="font-medium mr-2">Basket</Link>
           <div>

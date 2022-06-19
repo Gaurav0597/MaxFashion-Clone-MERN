@@ -84,6 +84,12 @@ const ProductReducer = (state = initState, { type, payload }) => {
           ...state,
           currentProduct: payload
         }
+        case types.LOGOUTUSER:
+          return {
+            ...state,
+            userId: "",
+            userName:""
+          }
     default:
       return state
   }

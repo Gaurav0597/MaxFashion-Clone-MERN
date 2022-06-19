@@ -196,4 +196,11 @@ const fetchDataRequest = (payload) => {
       console.log(error)
     })
   }
+
  
+ export  const HandleUserLogout= (payload) => {
+         return {
+          type:types.LOGOUTUSER,
+          payload
+         }
+  }

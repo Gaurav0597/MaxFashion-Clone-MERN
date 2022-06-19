@@ -27,6 +27,7 @@ const Login = () => {
       console.log(res.data)
       dispatch(login1(res.data.user._id))
       dispatch(loginUser(res.data.user.name))
+      navigate("/")
       if(userId!==""){
         alert(res.data.message)
         navigate("/")
