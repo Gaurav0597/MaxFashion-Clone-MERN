@@ -31,5 +31,16 @@ router.get("/product/men/:id", async (req, res) => {
     }
   
   })
+  router.delete("/productdelete/:id/:productid" , async(req, res) =>{
+
+    try{
+      await User.updateOne({_id: req.params.id } , {'$pull' : {"Cart" : req.params.productid}} ,{ new : true})
+      
+      res.send({ error : false , message : "product delete"})
+    }catch(err){
+      console.log(err)
+    }
+  
+  })
 
 module.exports = router
