@@ -10,7 +10,6 @@ const MensPageSchema = new mongoose.Schema(
     size: { type: Number, required: true },
     color: { type: String, required: true },
     Type: { type: String, required: true },
-
   },
   {
     timestamp: true,
