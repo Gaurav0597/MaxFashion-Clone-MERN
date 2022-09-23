@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.post('/', async (req, res) => {
+router.post('/data', async (req, res) => {
   try {
     const data = await dataSchema.create(req.body)
     res.send(data)
