@@ -12,6 +12,9 @@ app.use('/menproducts', mensProductController)
 const dataProdController = require('./controllers/data.controller')
 app.use('/data', dataProdController)
 
+const CompanyController = require('./controllers/Company.controller')
+app.use('/CompanyList', CompanyController)
+
 const loginAuth = require('./controllers/auth.controller.js')
 app.use('/', loginAuth)
 const RegisterAuth = require('./controllers/auth.controller.js')
